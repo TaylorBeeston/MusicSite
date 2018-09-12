@@ -1,0 +1,16 @@
+<a href="<%= play_song_path(song) %>" 
+   data-remote="true" 
+   class="list-group-item list-group-item-dark list-group-item-action flex-column align-items start" 
+   id="<%= song.id %>">
+  <div class="row">
+    <div class="col-1 d-none d-lg-inline">
+      <%= image_tag(song.picture.url, height: 60, width: 60, class: "rounded") %>
+    </div>
+    <div class="col-3">
+      <h6><%= "#{song.name} - #{song.artist}" %></h6>
+    </div>
+    <div class="col-8">
+      <p><%= song.bio %></p>
+    </div>
+  </div>
+</a>

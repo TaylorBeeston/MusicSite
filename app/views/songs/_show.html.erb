@@ -1,0 +1,7 @@
+<%= link_to("Back", songs_path, remote: true )%>
+<h1><%= @song.name %></h1>
+<p><%= @song.bio %></p>
+<%= image_tag(@song.picture.url, height: 50, width: 50) %>
+<%= link_to("Play", play_song_path(@song), remote: true) %>
+<%= link_to("Edit", edit_song_path(@song)) %>
+<%= link_to("Delete", @song, method: "delete") %>

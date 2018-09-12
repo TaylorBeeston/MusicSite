@@ -1,0 +1,22 @@
+<nav class="navbar navbar-dark bg-dark">
+  <div class="col-2">
+    <span class="navbar-brand">All Songs</span>
+  </div>
+  <div class="col-2">
+    <span class="text-white">Song Title</span>
+  </div>
+  <div class="col offset-1">
+    <span class="text-white">Song Description</span>
+  </div>
+  <% if logged_in? %>
+    <%= link_to("New", new_song_path, class: "nav-link", remote: true) %>
+    <%= link_to("Logout", logout_path, class: "nav-link", method: :delete) %>
+  <% else %>
+    <%= link_to("Login", login_path, class: "nav-link") %>
+  <% end %>
+</nav>
+<div class="row">
+  <div class="col-md-10 offset-md-1 list-group list-group-flush">
+    <%= render @songs %>
+  </div>
+</div>
