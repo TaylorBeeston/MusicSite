@@ -18,6 +18,7 @@ gem 'bootstrap'
 gem 'jquery-rails'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'bcrypt'
+gem 'fog'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
