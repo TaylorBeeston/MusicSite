@@ -1,5 +1,4 @@
-player = $("#main_player")[0];
 player.src  = "<%= j(@song.song.url) %>";
 player.play();
-$(".active").removeClass("active");
-$("#<%= @song.id %>").addClass("active");
+newActive(<%= @song.id %>);
+songQueue.shift();

@@ -12,11 +12,21 @@ $nicegray: rgb(167, 167, 167);
 
 body {
   background-color: $offblack;
+  padding: 60px 15px;
 }
 
 #main_player { 
   width: 100%;
   background-color: lightblue;
+}
+
+.list-group-item-dark.list-group-item-action {
+  background-color: #dadada;
+  &.active {
+    background-color: #77a1cf;
+    color: #1b1e21;
+    border: 0px;
+  }
 }
 
 /* typography */
