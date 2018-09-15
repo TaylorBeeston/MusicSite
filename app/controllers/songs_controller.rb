@@ -20,10 +20,8 @@ class SongsController < ApplicationController
 
   def new
     @song = Song.new
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    @btext = "Post"
+    @titleText = "New Song"
   end
 
   def create
@@ -38,13 +36,15 @@ class SongsController < ApplicationController
 
   def edit
     @song = Song.find(params[:id])
+    @btext = "Update"
+    @titleText = "Edit Song"
   end
 
   def update
     @song = Song.find(params[:id])
     if @song.update_attributes(song_params)
       flash[:success] = "Song updated"
-      redirect_to @song
+      redirect_to menu_path
     else
       render 'edit'
     end

@@ -1,12 +1,20 @@
-<div class="dialog">
+<nav class="navbar fixed-top navbar-dark bg-dark">
+  <div class="d-none d-md-inline col-2">
+    <span class="navbar-brand">Log In</span>
+  </div>
+  <%= link_to("Back to Main List", songs_path, class: "nav-link") %>
+</nav>
+<div class="col-8 offset-2">
+  <h1>Log in here. If you are simply listening to music, you do not need to log in.</h1>
   <%= form_for(:session, url: login_path) do |f| %>
-
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-
-    <%= f.submit "Log in" %>
+      <div class="field">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+      <div class="field">
+        <%= f.label :password %>
+        <%= f.password_field :password, class: "form-control" %>
+      </div>
+      <%= f.submit "Log in", class: "btn btn-primary" %>
   <% end %>
 </div>

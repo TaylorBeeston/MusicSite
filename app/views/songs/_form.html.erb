@@ -1,37 +1,37 @@
-<nav class="navbar navbar-dark bg-dark">
-  <div class="col-2">
-    <span class="navbar-brand">New Song</span>
+<nav class="navbar fixed-top navbar-dark bg-dark">
+  <div class="d-none d-md-inline col-2">
+    <span class="navbar-brand"><%= @titleText %></span>
   </div>
-  <%= link_to("Back", songs_path, class: "nav-link", remote: true) %>
+  <%= link_to("Back to Main List", songs_path, class: "nav-link") %>
 </nav>
 <%= form_for(@song) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="col-8 offset-2">
     <div class="field">
       <%= f.label :Name %>
-      <%= f.text_area :name, placeholder: "Name", class: "form-control" %>
+      <%= f.text_field :name, placeholder: "Name", class: "form-control" %>
     </div>
     <div class="field">
       <%= f.label :Artist %>
-      <%= f.text_area :artist, placeholder: @song.artist, class: "form-control" %>
+      <%= f.text_field :artist, placeholder: @song.artist, class: "form-control" %>
     </div>
     <div class="field">
       <%= f.label :Description %>
       <%= f.text_area :bio, placeholder: "Description", class: "form-control" %>
     </div>
-    <div class="picture">
-      <%= f.label :picture %>
-      <%= f.file_field :picture, accept: 'image/jpeg, image/gif, image/png' %>
+    <div class="row">
+      <div class="col-1"><%= f.label :picture %></div>
+      <div class="col"><%= f.file_field :picture, accept: 'image/jpeg, image/gif, image/png' %></div>
     </div>
-    <div class="song">
-      <%= f.label :song %>
-      <%= f.file_field :song, accept: 'audio/*' %>
+    <div class="row">
+      <div class="col-1"><%= f.label :song %></div>
+      <div class="col"><%= f.file_field :song, accept: 'audio/*' %></div>
     </div>
     <div class="field">
       <%= f.label "Tags (seperated by commas)" %>
       <%= f.text_area :tag_list, placeholder: "Dubstep", class: "form-control" %>
     </div>
-    <%= f.submit btext, class: "btn btn-primary" %>
+    <%= f.submit @btext, class: "btn btn-primary" %>
   </div>
 <% end %>
 

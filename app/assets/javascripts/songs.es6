@@ -3,6 +3,7 @@
 // You can not use CoffeeScript in this file: http://coffeescript.org
 $(document).on('turbolinks:load', function() {
   player = $("#main_player")[0];
+  main = $("#main")[0];
   songInfo = $("#song-info")[0];
   songQueue = [];
   songsList = [];
