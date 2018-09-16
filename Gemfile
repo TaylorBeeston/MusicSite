@@ -21,10 +21,10 @@ gem 'bootstrap'
 gem 'jquery-rails'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'bcrypt'
-gem 'fog', '1.42'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rails_best_practices'
 end
 
 group :development do
@@ -39,7 +39,11 @@ group :test do
   gem 'minitest'
   gem 'minitest-reporters'
   gem 'guard'
-  gem 'guard-minitest' 
+  gem 'guard-minitest'
+end
+
+group :production do
+  gem 'fog', '1.42'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
