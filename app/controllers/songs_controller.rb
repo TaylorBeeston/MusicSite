@@ -11,7 +11,7 @@ class SongsController < ApplicationController
   end
 
   def index
-    @songs = Song.all
+    @songs = Song.order(name: :asc)
     respond_to do |format|
       format.html
       format.js

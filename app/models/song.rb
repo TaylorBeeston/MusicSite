@@ -3,4 +3,5 @@ class Song < ApplicationRecord
   mount_uploader :picture, PictureUploader
   mount_uploader :song,    SongUploader
   acts_as_taggable
+
 end
