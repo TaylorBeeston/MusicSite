@@ -2,3 +2,4 @@ player.src  = "<%= j(@song.song.url) %>";
 player.play();
 newActive(<%= @song.id %>);
 songQueue.shift();
+$('title').html("<%= "#{@song.name} - #{@song.artist}" %>");
