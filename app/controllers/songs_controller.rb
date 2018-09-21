@@ -4,18 +4,24 @@ class SongsController < ApplicationController
 
   def show
     @song = Song.find(params[:id]) 
-    respond_to do |format|
-      format.html 
-      format.js
-    end
   end
 
   def index
-    @songs = Song.order(name: :asc)
-    respond_to do |format|
-      format.html
-      format.js
+    if params[:album].nil?
+      if params[:tags].nil?
+        @songs = Song.all.order(name: :asc)
+        @tags = Song.tag_counts_on(:tags)
+      else
+        @songs = Song.tagged_with(params[:tags]).order(name: :asc)
+        @tags = Song.tagged_with(params[:tags]).tag_counts_on(:tags)
+        params[:tags].each do |tag|
+          @tags = @tags.where.not(name: tag)
+        end
+      end
+    else
+      @songs = Song.all.tagged_with(params[:album], on: :albums).album_order
     end
+    @albums = Song.tag_counts_on(:albums)
   end
 
   def new
@@ -72,7 +78,7 @@ class SongsController < ApplicationController
     
     def song_params
       params.require(:song).permit(:song, :name, :bio, :picture, :tag_list,
-                                   :album_list)
+                                   :album_list, :num)
     end
 
 end

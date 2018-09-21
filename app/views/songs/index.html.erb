@@ -1,1 +1,9 @@
-<%= render "index" %>
+<%= render "header" %>
+<%= render "album_cloud" %>
+<%= render "remove_tag_cloud" %>
+<%= render "tag_cloud" %>
+<div class="row">
+  <div class="col-md-10 offset-md-1 list-group shadow-lg rounded">
+    <%= render @songs %>
+  </div>
+</div>

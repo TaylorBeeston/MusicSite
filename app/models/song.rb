@@ -5,4 +5,6 @@ class Song < ApplicationRecord
   acts_as_taggable
   acts_as_taggable_on :albums
 
+  scope :album_order, -> { order(num: :asc) }
+
 end

@@ -39,6 +39,14 @@ h6 {
   color: black;
 }
 
+a {
+  color: white;
+  &:hover {
+    color: gray;
+    text-decoration: none;
+  }
+}
+
 /* forms */
 
 label, input {

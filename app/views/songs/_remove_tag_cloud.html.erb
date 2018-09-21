@@ -1,0 +1,10 @@
+<% unless params[:tags].nil? || !params[:album].nil? %>
+  <div class="row my-2">
+    <div class="col-md-10 offset-md-1">
+      <% params[:tags].each do |tag| %>
+        <%= link_to("#{tag} (X)", songs_path(remove_search_tag(params[:tags], tag)),
+                    class: "btn btn-outline-danger") %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

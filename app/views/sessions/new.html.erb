@@ -8,13 +8,14 @@
   <h1>Log in here. If you are simply listening to music, you do not need to log in.</h1>
   <%= form_for(:session, url: login_path) do |f| %>
       <div class="field">
-        <%= f.label :name %>
-        <%= f.text_field :name, class: "form-control" %>
+        <%= f.label(:name) %>
+        <%= f.text_field(:name, class: "form-control") %>
       </div>
       <div class="field">
-        <%= f.label :password %>
-        <%= f.password_field :password, class: "form-control" %>
+        <%= f.label(:password) %>
+        <%= f.password_field(:password, class: "form-control") %>
       </div>
-      <%= f.submit "Log in", class: "btn btn-primary" %>
+      <%= f.submit("Log in", class: "btn btn-primary", 
+                   data: { confirm: stopSongText }) %>
   <% end %>
 </div>
