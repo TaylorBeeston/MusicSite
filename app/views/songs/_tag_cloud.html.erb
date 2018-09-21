@@ -1,9 +1,9 @@
 <% unless @tags.nil? %>
-  <div class="row my-2">
+  <div class="row">
     <div class="col-md-10 offset-md-1">
       <% @tags.each do |tag| %>
         <%= link_to(tag.name, songs_path(tags_params(params[:tags], tag.name)),
-                    class: "btn btn-secondary")%>
+                    class: "btn btn-secondary my-2") %>
       <% end %>
     </div>
   </div>
