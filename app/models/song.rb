@@ -1,5 +1,7 @@
 class Song < ApplicationRecord
-  validates :song, presence: true
+  validates :song,   presence: true
+  validates :name,   presence: true
+  validates :artist, presence: true
   mount_uploader :picture, PictureUploader
   mount_uploader :song,    SongUploader
   acts_as_taggable
