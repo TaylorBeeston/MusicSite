@@ -9,17 +9,18 @@ class SongsController < ApplicationController
   def index
     if params[:album].nil?
       if params[:tags].nil?
-        @songs = Song.all.order(name: :asc)
-        @tags = Song.tag_counts_on(:tags)
+        @songs = Song.asc_sort
+        @tags = Song.tag_counts
       else
-        @songs = Song.tagged_with(params[:tags]).order(name: :asc)
-        @tags = Song.tagged_with(params[:tags]).tag_counts_on(:tags)
+        @songs = Song.tagged(params[:tags])
+        @tags = Song.tagged_with(params[:tags]).tag_counts
+        # Remove already selected tags from tag list
         params[:tags].each do |tag|
           @tags = @tags.where.not(name: tag)
         end
       end
     else
-      @songs = Song.all.tagged_with(params[:album], on: :albums).album_order
+      @songs = Song.album_tag(params[:album])
     end
     @albums = Song.tag_counts_on(:albums)
   end

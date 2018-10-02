@@ -8,6 +8,7 @@ class SongsControllerTest < ActionDispatch::IntegrationTest
 
     @cedar = songs(:cedar)
     @cedar.tag_list = "Basses, Long, Jazz"
+    @cedar.album_list = "Sample"
     @cedar.save
   end
 
@@ -17,6 +18,7 @@ class SongsControllerTest < ActionDispatch::IntegrationTest
     assert_select '.list-group-item', minimum: 2
     assert_select 'a[href=?]', play_song_path(@burp.id)
     assert_select 'a[href=?]', songs_path(tags: ['Basses'])
+    assert_select 'a[href=?]', songs_path(album: 'Sample')
     assert_select '#song-info', text: "Nothing Playing..."
     assert_select '#main_player', src: ''
   end
@@ -27,7 +29,15 @@ class SongsControllerTest < ActionDispatch::IntegrationTest
     assert_select 'a[href=?]', play_song_path(@cedar.id)
     assert_select 'a[href=?]', songs_path(tags: ['Jazz']), text: 'Basses (X)'
     assert_select 'a[href=?]', songs_path(tags: ['Basses']), text: 'Jazz (X)'
+    assert_select 'a',         text: 'Basses', count: 0
     assert_select 'a[href=?]', songs_path
+  end
+
+  test "get index with album" do
+    get root_path(album: 'Sample')
+    assert_select '.list-group-item', count: 1
+    assert_select 'a[href=?]', play_song_path(@cedar.id)
+    assert_select 'a[href=?]', songs_path, text: 'Sample'
   end
 
   test "should redirect create when not logged in" do
